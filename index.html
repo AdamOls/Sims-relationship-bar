@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sims Relationship Bar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .bar-container {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .bar {
+            height: 30px;
+            border-radius: 15px;
+            background-color: #ccc;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            text-align: right;
+            line-height: 30px;
+            color: #fff;
+            border-radius: 15px 0 0 15px;
+        }
+        .bar-label {
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        .bar-fill-friendship {
+            background-color: #4CAF50;
+        }
+        .bar-fill-romance {
+            background-color: #FF4081;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Sims Relationship Bar</div>
+        
+        <div class="bar-container">
+            <div class="bar-label">Friendship</div>
+            <div class="bar" id="friendship-bar">
+                <div class="bar-fill bar-fill-friendship" id="friendship-fill" style="width: 50%;">50%</div>
+            </div>
+        </div>
+        
+        <div class="bar-container">
+            <div class="bar-label">Romance</div>
+            <div class="bar" id="romance-bar">
+                <div class="bar-fill bar-fill-romance" id="romance-fill" style="width: 30%;">30%</div>
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <label for="friendship-input">Set Friendship Level (0-100):</label>
+            <input type="number" id="friendship-input" value="50" min="0" max="100" oninput="updateBar('friendship')">
+        </div>
+        
+        <div class="input-group">
+            <label for="romance-input">Set Romance Level (0-100):</label>
+            <input type="number" id="romance-input" value="30" min="0" max="100" oninput="updateBar('romance')">
+        </div>
+    </div>
+    
+    <script>
+        function updateBar(type) {
+            const input = document.getElementById(`${type}-input`);
+            const fill = document.getElementById(`${type}-fill`);
+            const value = input.value;
+            fill.style.width = value + '%';
+            fill.textContent = value + '%';
+        }
+    </script>
+</body>
+</html>
